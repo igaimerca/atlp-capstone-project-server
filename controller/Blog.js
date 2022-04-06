@@ -1,5 +1,5 @@
 
-const Blog = require("./models/Blog");
+const Blog = require("../models/Blog");
 const { BlogSchema } = require("../utils/joiValidate.js");
 
 
