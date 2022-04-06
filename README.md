@@ -10,7 +10,7 @@
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/igaimerca/atlp-capstone-server.git
+   git clone https://github.com/igaimerca/atlp-capstone-project-server.git
    ```
 2. Install packages
    ```sh
