@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const blogRoutes = require("./routes/Blog");
 
 mongoose
     .connect("mongodb://localhost:27017/portfolio", { useNewUrlParser: true })
     .then(() => {
         const app = express();
         app.use(express.json());
-        app.use("/api", routes);
+        app.use("/api", blogRoutes);
 
         const PORT = 5000;
         app.listen(PORT, () => {
