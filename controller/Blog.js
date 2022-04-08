@@ -18,7 +18,7 @@ const createBlog = async (req, res) => {
         let body = req.body;
         const { error, value } = BlogSchema.validate(body);
         if (error) {
-            res.status(400).json({ success: false, msg: error });
+            res.status(400).json({ success: false, msg: error.details[0].message });
         } else {
             const newBlog = new Blog(value);
             await newBlog.save();
@@ -47,7 +47,7 @@ const updateBlog = async (req, res) => {
                 .status(404)
                 .json({ success: false, msg: `Blog not found!` });
         } else if (error) {
-            return res.status(400).json({ success: false, msg: error });
+            return res.status(400).json({ success: false, msg: error.details[0].message });
         } else {
             const updatedBlog = await Blog.findByIdAndUpdate(_id, value, {
                 new: true,
