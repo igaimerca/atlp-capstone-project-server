@@ -11,7 +11,7 @@ module.exports.BlogSchema = Joi.object({
 module.exports.QuerySchema = Joi.object({
   name: Joi.string().required().min(2).max(1000),
   email: Joi.string().email(),
-  project: Joi.string().required().min(2).max(1000),
+  subject: Joi.string().required().min(2).max(1000),
   message: Joi.string().min(2).max(1000),
 });
 

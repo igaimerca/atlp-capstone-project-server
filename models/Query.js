@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Querychema = mongoose.Schema({
   name: String,
   email: String,
-  project: String,
+  subject: String,
   message: String,
 });
 

@@ -1,8 +1,9 @@
 const express = require("express");
 const { getQueries, createQuery } = require("../controller/Query");
+const authenticate = require("../middlewares/auth.middleware");
 const router = express.Router();
 
-router.get("/", getQueries);
+router.get("/", authenticate, getQueries);
 
 router.post("/", createQuery);
 
