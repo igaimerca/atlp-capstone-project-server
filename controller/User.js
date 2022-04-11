@@ -69,12 +69,11 @@ const login = async (req, res) => {
             return res.status(400).send("Invalid Email or Password!");
 
         const token = user.generateAuthToken();
-        res.send({
+        res.header("Authorization", token).send({
             status: 200,
             message: "Login Successful",
             data: user,
-            token: token
-        });
+          });
     } catch (ex) {
         res.status(400).send(ex.message);
     }
@@ -82,11 +81,10 @@ const login = async (req, res) => {
 
 const deleteAccount = async (req, res) => {
     try {
-        const { id: _id } = req.params;
-        let user = await User.findById(_id);
+        let user = await User.findById(req.user._id);
         if (!user) return res.status(404).send("The user does not exist");
 
-        await User.findByIdAndRemove(_id);
+        await User.findByIdAndRemove(req.user._id);
         res.status(200).send("User deleted successfully");
     } catch (ex) {
         res.status(400).send(ex.message);
@@ -95,10 +93,9 @@ const deleteAccount = async (req, res) => {
 
 
 const deleteAllAccounts = async (req, res) => {
-    console.log("ok");
     try {
-        await User.remove({});
-        res.status(200).send("Users deleted successfully");
+            await User.remove({});
+            res.status(200).send("Users deleted successfully");
     } catch (ex) {
         res.status(400).send(ex.message);
     }
