@@ -4,6 +4,9 @@ const blogRoutes = require("./routes/Blog");
 const contactRoutes = require("./routes/Query");
 const userRoutes = require("./routes/User");
 
+const { config } = require("dotenv");
+config({ path: "./.env" });
+
 mongoose
     .connect("mongodb://localhost:27017/portfolio", { useNewUrlParser: true })
     .then(() => {
