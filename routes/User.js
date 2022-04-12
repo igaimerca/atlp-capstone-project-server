@@ -14,7 +14,7 @@ router.get("/",authenticate, getUsers);
 router.post("/", createUser);
 router.post("/login", login);
 
-router.patch("/:id", updateUser);
+router.patch("/:id", authenticate, updateUser);
 router.delete("/delete", authenticate, deleteAccount);
 router.delete("/all", authenticate, deleteAllAccounts);
 

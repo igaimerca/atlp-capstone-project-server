@@ -48,7 +48,7 @@ const updateUser = async (req, res) => {
             return res.status(400).json({ success: false, msg: error.details[0].message });
         } else {
             if (value.password) {
-                return res.status(501).json("Password not allowed! please try resetting")
+                return res.status(501).json("Password requires resetting")
             }
             const updatedUser = await User.findByIdAndUpdate(_id, value, {
                 new: true,
