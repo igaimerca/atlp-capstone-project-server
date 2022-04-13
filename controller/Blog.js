@@ -76,10 +76,10 @@ export const deleteBlog = async (req, res) => {
 
 export const commentBlog = async (req, res) => {
     const { id } = req.params;
-    const {userId, comment} = req.body;
+    const {comment} = req.body;
     const blog = await Blog.findById(id);
 
-    blog.comments.push({userId, comment});
+    blog.comments.push({ userId: req.user._id, comment});
 
     const updatedBlog = await Blog.findByIdAndUpdate(id, blog, {
         new: true,
