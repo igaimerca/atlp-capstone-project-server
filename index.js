@@ -13,7 +13,7 @@ const swaggerJson = require("./swagger.json");
 config({ path: "./.env" });
 
 mongoose
-    .connect("mongodb://localhost:27017/portfolio", { useNewUrlParser: true })
+    .connect(process.env.MONGO_URI, { useNewUrlParser: true })
     .then(() => {
         const app = express();
         app.use(express.json());

@@ -228,6 +228,44 @@
                     }
                 }
             }
+        },
+        "/contact": {
+            "get": {
+                "tags": [
+                    "QUERY OPERATIONS"
+                ],
+                "summary": "Get all queries",
+                "description": "Get all queries",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     }
 }

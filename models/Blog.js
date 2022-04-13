@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const BlogSchema = mongoose.Schema({
   title: String,
   banner: String,
-  comments: [String],
+  comments: [Object],
   likes: Number,
   description: String,
 });
