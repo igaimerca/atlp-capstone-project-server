@@ -3,8 +3,13 @@ import mongoose from "mongoose";
 import blogRoutes from "./routes/Blog.js";
 import contactRoutes from "./routes/Query.js";
 import userRoutes from "./routes/User.js";
-
 import { config } from "dotenv";
+import {swaggerUi } from "./utils/swagger.js";
+
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const swaggerJson = require("./swagger.json");
+
 config({ path: "./.env" });
 
 mongoose
@@ -15,6 +20,7 @@ mongoose
         app.use("/blogs", blogRoutes);
         app.use("/contact", contactRoutes);
         app.use("/auth", userRoutes);
+        app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerJson));
 
         const PORT = 5000;
         app.listen(PORT, () => {
