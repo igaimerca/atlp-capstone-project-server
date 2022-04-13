@@ -1,6 +1,7 @@
-const express = require("express");
-const { createBlog, getBlog, updateBlog, deleteBlog, getBlogs, commentBlog } = require("../controller/Blog");
-const authenticate = require("../middlewares/auth.middleware");
+import express from "express";
+import { createBlog, getBlog, updateBlog, deleteBlog, getBlogs, commentBlog } from "../controller/Blog.js";
+import authenticate from "../middlewares/auth.middleware.js";
+
 const router = express.Router();
 
 router.get("/", getBlogs);
@@ -15,4 +16,4 @@ router.delete("/:id", authenticate, deleteBlog);
 
 router.patch("/comment/:id", commentBlog);
 
-module.exports = router;
+export default router;

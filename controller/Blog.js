@@ -1,10 +1,10 @@
 
-const mongoose = require('mongoose');
-const Blog = require("../models/Blog");
-const { BlogSchema } = require("../utils/joiValidate.js");
+import mongoose from 'mongoose';
+import Blog from "../models/Blog.js";
+import { BlogSchema } from "../utils/joiValidate.js";
 
 
-const getBlogs = async (req, res) => {
+export const getBlogs = async (req, res) => {
     try {
         const blogs = await Blog.find();
         res.status(200).json(blogs);
@@ -13,7 +13,7 @@ const getBlogs = async (req, res) => {
     }
 }
 
-const createBlog = async (req, res) => {
+export const createBlog = async (req, res) => {
     try {
         let body = req.body;
         const { error, value } = BlogSchema.validate(body);
@@ -28,7 +28,7 @@ const createBlog = async (req, res) => {
         res.status(400).json({ success: false, msg: error.message });
     }
 }
-const getBlog = async (req, res) => {
+export const getBlog = async (req, res) => {
     const { id } = req.params;
     try {
         const blog = await Blog.findById(id);
@@ -37,7 +37,7 @@ const getBlog = async (req, res) => {
         res.status(404).json(error.message);
     }
 }
-const updateBlog = async (req, res) => {
+export const updateBlog = async (req, res) => {
     try {
         const { id: _id } = req.params;
         const body = req.body;
@@ -58,7 +58,7 @@ const updateBlog = async (req, res) => {
         console.log(error.message);
     }
 }
-const deleteBlog = async (req, res) => {
+export const deleteBlog = async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -74,7 +74,7 @@ const deleteBlog = async (req, res) => {
     }
 }
 
-const commentBlog = async (req, res) => {
+export const commentBlog = async (req, res) => {
     const { id } = req.params;
     const {comment} = req.body;
     const blog = await Blog.findById(id);
@@ -99,7 +99,3 @@ export const commentPost = async (req, res) => {
     });
     res.json(updatedPost);
   };
-
-module.exports = {
-    getBlogs, createBlog, updateBlog, getBlog, deleteBlog, commentBlog
-}

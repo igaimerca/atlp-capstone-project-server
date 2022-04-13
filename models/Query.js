@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const Querychema = mongoose.Schema({
   name: String,
@@ -7,4 +7,4 @@ const Querychema = mongoose.Schema({
   message: String,
 });
 
-module.exports = mongoose.model("Query", Querychema);
+export default mongoose.model("Query", Querychema);

@@ -1,13 +1,15 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   createUser,
   updateUser,
   getUsers,
   login,
   deleteAccount,
   deleteAllAccounts,
-} = require("../controller/User");
-const authenticate = require("../middlewares/auth.middleware");
+} from "../controller/User.js";
+
+import authenticate from "../middlewares/auth.middleware.js";
+
 const router = express.Router();
 
 router.get("/",authenticate, getUsers);
@@ -18,4 +20,4 @@ router.patch("/:id", authenticate, updateUser);
 router.delete("/delete", authenticate, deleteAccount);
 router.delete("/all", authenticate, deleteAllAccounts);
 
-module.exports = router;
+export default router;

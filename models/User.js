@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const jsonwebtoken = require("jsonwebtoken");
+import jsonwebtoken from "jsonwebtoken";
 const {sign} = jsonwebtoken
 
 const userSchema = mongoose.Schema({
@@ -29,4 +29,4 @@ userSchema.methods.generateAuthToken = function(){
     return 'Bearer '+token
 }
 
-module.exports = mongoose.model("User", userSchema);
+export default mongoose.model("User", userSchema);

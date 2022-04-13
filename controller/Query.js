@@ -1,10 +1,10 @@
 
-const mongoose = require('mongoose');
-const Query = require("../models/Query");
-const { QuerySchema } = require("../utils/joiValidate.js");
+import mongoose from 'mongoose';
+import Query from "../models/Query.js";
+import { QuerySchema } from "../utils/joiValidate.js";
 
 
-const getQueries = async (req, res) => {
+export const getQueries = async (req, res) => {
     try {
         const queries = await Query.find();
         res.status(200).json(queries);
@@ -13,7 +13,7 @@ const getQueries = async (req, res) => {
     }
 }
 
-const createQuery = async (req, res) => {
+export const createQuery = async (req, res) => {
     try {
         let body = req.body;
         const { error, value } = QuerySchema.validate(body);
@@ -27,8 +27,4 @@ const createQuery = async (req, res) => {
     } catch (error) {
         res.status(400).json({ success: false, msg: error.message });
     }
-}
-
-module.exports = {
-    getQueries, createQuery 
 }

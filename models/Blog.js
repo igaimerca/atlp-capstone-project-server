@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const BlogSchema = mongoose.Schema({
   title: String,
@@ -8,4 +8,4 @@ const BlogSchema = mongoose.Schema({
   description: String,
 });
 
-module.exports = mongoose.model("Blog", BlogSchema);
+export default mongoose.model("Blog", BlogSchema);

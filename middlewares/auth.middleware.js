@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
+import  jwt_decode from "jwt-decode";
 const { verify } = jwt;
-const jwt_decode = require("jwt-decode");
 
 function authenticate(req, res, next) {
   const token = req.header("Authorization")?.trim();
@@ -22,4 +22,4 @@ function authenticate(req, res, next) {
   }
 }
 
-module.exports = authenticate;
+export default authenticate;

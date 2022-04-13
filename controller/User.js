@@ -1,12 +1,12 @@
 
-const mongoose = require('mongoose');
-const User = require("../models/User");
-const { UserSchema } = require("../utils/joiValidate.js");
-const { genSalt, hash } = require("bcrypt");
-const bcrypt = require("bcrypt");
+import mongoose from 'mongoose';
+import User from "../models/User.js";
+import { UserSchema } from "../utils/joiValidate.js";
+import { genSalt, hash } from "bcrypt";
+import bcrypt from "bcrypt";
 const { compare } = bcrypt;
 
-const getUsers = async (req, res) => {
+export const getUsers = async (req, res) => {
     try {
         const users = await User.find();
         res.status(200).json(users);
@@ -16,7 +16,7 @@ const getUsers = async (req, res) => {
 }
 
 
-const createUser = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
         let body = req.body;
         const { error, value } = UserSchema.validate(body);
@@ -35,7 +35,7 @@ const createUser = async (req, res) => {
     }
 }
 
-const updateUser = async (req, res) => {
+export const updateUser = async (req, res) => {
     try {
         const { id: _id } = req.params;
         const body = req.body;
@@ -60,7 +60,7 @@ const updateUser = async (req, res) => {
     }
 }
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
     try {
         let user = await User.findOne({ email: req.body.email });
         if (!user) return res.status(400).send("Invalid Email or Password!");
@@ -79,7 +79,7 @@ const login = async (req, res) => {
     }
 };
 
-const deleteAccount = async (req, res) => {
+export const deleteAccount = async (req, res) => {
     try {
         let user = await User.findById(req.user._id);
         if (!user) return res.status(404).send("The user does not exist");
@@ -92,7 +92,7 @@ const deleteAccount = async (req, res) => {
 };
 
 
-const deleteAllAccounts = async (req, res) => {
+export const deleteAllAccounts = async (req, res) => {
     try {
             await User.remove({});
             res.status(200).send("Users deleted successfully");
@@ -102,6 +102,3 @@ const deleteAllAccounts = async (req, res) => {
 };
 
 
-module.exports = {
-    createUser, updateUser, getUsers, login, deleteAccount, deleteAllAccounts
-}

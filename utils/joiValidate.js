@@ -1,6 +1,6 @@
-const Joi = require("joi");
+import Joi from "joi";
 
-module.exports.BlogSchema = Joi.object({
+export const BlogSchema = Joi.object({
   title: Joi.string().required().min(2).max(1000),
   banner: Joi.string(),
   likes: Joi.number(),
@@ -8,14 +8,14 @@ module.exports.BlogSchema = Joi.object({
   description: Joi.string().min(2).max(1000),
 });
 
-module.exports.QuerySchema = Joi.object({
+export const QuerySchema = Joi.object({
   name: Joi.string().required().min(2).max(1000),
   email: Joi.string().email(),
   subject: Joi.string().required().min(2).max(1000),
   message: Joi.string().min(2).max(1000),
 });
 
-module.exports.UserSchema = Joi.object({
+export const UserSchema = Joi.object({
   name: Joi.string().required().min(2).max(1000),
   email: Joi.string().email(),
   position: Joi.string().required().min(2).max(35),

@@ -1,10 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const blogRoutes = require("./routes/Blog");
-const contactRoutes = require("./routes/Query");
-const userRoutes = require("./routes/User");
+import express from "express";
+import mongoose from "mongoose";
+import blogRoutes from "./routes/Blog.js";
+import contactRoutes from "./routes/Query.js";
+import userRoutes from "./routes/User.js";
 
-const { config } = require("dotenv");
+import { config } from "dotenv";
 config({ path: "./.env" });
 
 mongoose
