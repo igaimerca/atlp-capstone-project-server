@@ -26,8 +26,8 @@ mongoose
             res.send("Welcome to Aime's brand API!");
         })
 
-        const PORT = 5000;
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT} && DB Connected`);
+        const port = 5000;
+        app.listen(process.env.PORT || port, () => {
+            console.log(`Server is running on port ${process.env.PORT || port} && DB Connected`);
         });
     });
