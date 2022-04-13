@@ -22,6 +22,10 @@ mongoose
         app.use("/auth", userRoutes);
         app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerJson));
 
+        app.get("/", (req, res) => {
+            res.send("Welcome to Aime's brand API!");
+        })
+
         const PORT = 5000;
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT} && DB Connected`);
