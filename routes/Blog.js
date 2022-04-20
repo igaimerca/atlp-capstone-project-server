@@ -10,7 +10,7 @@ router.post("", authenticate, createBlog);
 
 router.get("/:id", getBlog);
 
-router.patch("/:id", authenticate, updateBlog);
+router.put("/:id", authenticate, updateBlog);
 
 router.delete("/:id/delete", authenticate, deleteBlog);
 
