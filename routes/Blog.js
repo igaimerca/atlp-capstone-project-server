@@ -12,8 +12,8 @@ router.get("/:id", getBlog);
 
 router.patch("/:id", authenticate, updateBlog);
 
-router.delete("/:id", authenticate, deleteBlog);
+router.delete("/:id/delete", authenticate, deleteBlog);
 
-router.patch("/comment/:id", commentBlog);
+router.patch("/comment/:id", authenticate, commentBlog);
 
 export default router;

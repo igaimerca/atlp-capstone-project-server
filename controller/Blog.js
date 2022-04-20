@@ -79,7 +79,7 @@ export const commentBlog = async (req, res) => {
     const {comment} = req.body;
     const blog = await Blog.findById(id);
 
-    blog.comments.push(comment);
+    blog.comments.push({ userId: req.user._id, comment});
 
     const updatedBlog = await Blog.findByIdAndUpdate(id, blog, {
         new: true,
