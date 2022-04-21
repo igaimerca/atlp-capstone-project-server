@@ -15,7 +15,7 @@ function authenticate(req, res, next) {
         req.user = user;
         next();
     }else {
-    return res.status(401).send("Access Denied! You need to login first as an admin");
+    return res.status(401).send("Access Denied! You need to login first");
     }
   } catch (ex) {
     res.status(400).send("Invalid Token");

@@ -6,7 +6,7 @@ chai.should();
 chai.use(chaiHttp);
 const server = "http://localhost:5000";
 
-describe("Blogs API", () => {
+describe("Blogs Endpoints", () => {
   /**
    * Test the GET route
    */
@@ -56,7 +56,7 @@ describe("Blogs API", () => {
    * Test the POST route
    */
   describe("POST /blogs", () => {
-    it("It should POST a new blog", (done) => {
+    it("It should create a new blog", (done) => {
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU3MGM4ODBmNzhlMWQyZjUwNDUzNzMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NjA2MTl9.JhWPMPZbb1EF9GwU7UX5FHZ-WMTORC6BCHE6nngQGuQ";
       const blog = {
@@ -83,16 +83,16 @@ describe("Blogs API", () => {
   });
 
   /**
-   * Test the PATCH route
+   * Test the PUT route
    */
 
-  describe("PATCH /blogs/:id", () => {
-    it("It should PATCH an existing blog", (done) => {
+  describe("PUT /blogs/:id", () => {
+    it("It should update an existing blog", (done) => {
       const blogId = "62570d150f78e1d2f5045378";
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU3MGM4ODBmNzhlMWQyZjUwNDUzNzMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NjA2MTl9.JhWPMPZbb1EF9GwU7UX5FHZ-WMTORC6BCHE6nngQGuQ";
       const blog = {
-        title: "New title after patching!",
+        title: "New title after updating!",
         banner: "http://tny.im/rPW",
         comments: ["Thanks for sharing", "Great blog!"],
         likes: 20,
@@ -100,7 +100,7 @@ describe("Blogs API", () => {
       };
       chai
         .request(server)
-        .patch("/blogs/" + blogId)
+        .put("/blogs/" + blogId)
         .set({ Authorization: `Bearer ${token}` })
         .send(blog)
         .end((err, response) => {
@@ -108,28 +108,55 @@ describe("Blogs API", () => {
           response.body.should.be.a("object");
           response.body.should.have
             .property("title")
-            .eq("New title after patching!");
+            .eq("New title after updating!");
           done();
         });
     });
   });
 
+    /**
+   * Test the PATCH route
+   */
+
+describe("PATCH /blogs/comment/:id", () => {
+    it("It should add comment on an existing blog", (done) => {
+      const blogId = "62570d150f78e1d2f5045378";
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU3MGM4ODBmNzhlMWQyZjUwNDUzNzMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NjA2MTl9.JhWPMPZbb1EF9GwU7UX5FHZ-WMTORC6BCHE6nngQGuQ";
+      const blog = {
+        comment: "new comment after patching!",
+      };
+      chai
+        .request(server)
+        .patch("/blogs/comment/" + blogId)
+        .set({ Authorization: `Bearer ${token}` })
+        .send(blog)
+        .end((err, response) => {
+          response.should.have.status(200);
+          response.body.should.be.a("object");
+          done();
+        });
+    });
+  });
+
+
   /**
    * Test the DELETE route
    */
-//   describe("DELETE /blogs/:id", () => {
-//     it("It should DELETE an existing blog", (done) => {
-//       const blogId = "62570d150f78e1d2f5045378";
-//       const token =
-//         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU3MGM4ODBmNzhlMWQyZjUwNDUzNzMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NjA2MTl9.JhWPMPZbb1EF9GwU7UX5FHZ-WMTORC6BCHE6nngQGuQ";
-//       chai
-//         .request(server)
-//         .delete(`blogs/${blogId}/delete`)
-//         .set({ Authorization: `Bearer ${token}` })
-//         .end((err, response) => {
-//           response.should.have.status(201);
-//           done();
-//         });
-//     });
-//   });
+  describe("DELETE /blogs/:id/delete", () => {
+    it("It should DELETE an existing blog", (done) => {
+      const blogId = "62600ad0b3f29f61ab82b939";
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU3MGM4ODBmNzhlMWQyZjUwNDUzNzMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NjA2MTl9.JhWPMPZbb1EF9GwU7UX5FHZ-WMTORC6BCHE6nngQGuQ";
+      chai
+        .request(server)
+        .delete(`/blogs/${blogId}/delete`)
+        .set({ Authorization: `Bearer ${token}` })
+        .end((err, response) => {
+          response.should.have.status(201);
+          done();
+        });
+    });
+  });
+
 });
