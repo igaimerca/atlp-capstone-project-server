@@ -114,11 +114,11 @@ describe("Blogs Endpoints", () => {
     });
   });
 
-    /**
+  /**
    * Test the PATCH route
    */
 
-describe("PATCH /blogs/comment/:id", () => {
+  describe("PATCH /blogs/comment/:id", () => {
     it("It should add comment on an existing blog", (done) => {
       const blogId = "62570d150f78e1d2f5045378";
       const token =
@@ -139,7 +139,6 @@ describe("PATCH /blogs/comment/:id", () => {
     });
   });
 
-
   /**
    * Test the DELETE route
    */
@@ -158,5 +157,4 @@ describe("PATCH /blogs/comment/:id", () => {
         });
     });
   });
-
 });

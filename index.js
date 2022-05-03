@@ -5,6 +5,7 @@ import contactRoutes from "./routes/Query.js";
 import userRoutes from "./routes/User.js";
 import { config } from "dotenv";
 import {swaggerUi } from "./utils/swagger.js";
+import cors from "cors";
 
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
@@ -17,6 +18,7 @@ mongoose
 .then(() => {
         const app = express();
         app.use(express.json());
+        app.use(cors())
         app.use("/blogs", blogRoutes);
         app.use("/contact", contactRoutes);
         app.use("/auth", userRoutes);
