@@ -18,6 +18,6 @@ router.post("/login", login);
 
 router.patch("/:id", authenticate, updateUser);
 router.delete("/delete", authenticate, deleteAccount);
-router.delete("/all", authenticate, deleteAllAccounts);
+router.delete ("/all", authenticate, deleteAllAccounts);
 
 export default router;
