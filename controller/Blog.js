@@ -62,8 +62,12 @@ export const deleteBlog = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({ success: false, msg: `Blog not found!` });
     } else {
-      await Blog.findByIdAndDelete(id);
-      return res.status(201).json("Blog deleted successfully!");
+        let deletedBlog = await Blog.findByIdAndDelete(id);
+        if(deletedBlog) {
+            return res.status(201).json("Blog deleted successfully!");
+        }else {
+            return res.status(404).json({ success: false, msg: `Blog not found!` });
+        }
     }
   } catch (error) {
     console.log(error.message);

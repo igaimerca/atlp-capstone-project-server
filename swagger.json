@@ -42,13 +42,6 @@
                 ],
                 "parameters":[
                     {
-                        "in":"header",
-                        "name":"Authorization",
-                        "description":"JWT Token of the user",
-                        "type":"string",
-                        "required":"true"
-                    },
-                    {
                         "in":"path",
                         "name":"id",
                         "description":"id of the blog",
@@ -124,6 +117,51 @@
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/blogs/create": {
+            "post": {
+                "tags": [
+                    "BLOG OPERATIONS"
+                ],
+                "summary": "create a new blog",
+                "description": "create a new blog",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"formData",
+                        "name":"email",
+                        "description":"Email of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"password",
+                        "description":"Password of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
                     },
                     "400": {
                         "description": "Invalid data"
