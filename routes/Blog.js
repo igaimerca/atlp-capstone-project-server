@@ -10,10 +10,10 @@ router.post("/create", authenticate, createBlog);
 
 router.get("/:id", getBlog);
 
-router.put("/:id", authenticate, updateBlog);
+router.put("/:id/update", authenticate, updateBlog);
 
 router.delete("/:id/delete", authenticate, deleteBlog);
 
-router.patch("/comment/:id", authenticate, commentBlog);
+router.patch("/:id/comment", authenticate, commentBlog);
 
 export default router;

@@ -1,300 +1,456 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "title": "My Brand API Documentation",
-        "description":
-                "This is a REST API application for my brand ATLP Capstone project. Made with ❤️ by Aime",
-        "version": "1.0.0",
-        "termsOfService": "http://swagger.io/terms/",
-        "contact": {
-            "name": "Aime",
-            "email": "igaimerca@gmail.com"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        }
+  "swagger": "2.0",
+  "info": {
+    "title": "My Brand API Documentation",
+    "description": "This is a REST API application for my brand ATLP Capstone project. Made with ❤️ by Aime",
+    "version": "1.0.0",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "name": "Aime",
+      "email": "igaimerca@gmail.com"
     },
-    "tags": [
-        {
-            "name": "BLOG OPERATIONS",
-            "description": "Operations on blogs"
-        },
-        {
-            "name": "USER OPERATIONS",
-            "description": "Operations on user management and profile"
-        },
-        {
-            "name": "QUERY OPERATIONS",
-            "description": "Operations on contact messages"
-        }
-    ],
-    "paths":{
-        "/blogs/{id}": {
-            "get": {
-                "tags": [
-                    "BLOG OPERATIONS"
-                ],
-                "summary": "Get one blog",
-                "description": "Get one blog",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "in":"path",
-                        "name":"id",
-                        "description":"id of the blog",
-                        "type":"string",
-                        "required":"true"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Invalid data"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/blogs": {
-            "get": {
-                "tags": [
-                    "BLOG OPERATIONS"
-                ],
-                "summary": "Get all blogs",
-                "description": "Get all blogs so far!",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Invalid data"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/blogs/{id}/delete": {
-            "delete": {
-                "tags": [
-                    "BLOG OPERATIONS"
-                ],
-                "summary": "Delete a blog",
-                "description": "Delete a blog",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "in":"header",
-                        "name":"Authorization",
-                        "description":"JWT Token of the user",
-                        "type":"string",
-                        "required":"true"
-                    },
-                    {
-                        "in":"path",
-                        "name":"id",
-                        "description":"id of the property",
-                        "type":"string",
-                        "required":"true"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Invalid data"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/blogs/create": {
-            "post": {
-                "tags": [
-                    "BLOG OPERATIONS"
-                ],
-                "summary": "create a new blog",
-                "description": "create a new blog",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "in":"formData",
-                        "name":"email",
-                        "description":"Email of the user",
-                        "type":"string",
-                        "required":"true"
-                    },
-                    {
-                        "in":"formData",
-                        "name":"password",
-                        "description":"Password of the user",
-                        "type":"string",
-                        "required":"true"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "201": {
-                        "description": "Created"
-                    },
-                    "400": {
-                        "description": "Invalid data"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/auth/login": {
-            "post": {
-                "tags": [
-                    "USER OPERATIONS"
-                ],
-                "summary": "login to your account",
-                "description": "login to your account",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "in":"formData",
-                        "name":"email",
-                        "description":"Email of the user",
-                        "type":"string",
-                        "required":"true"
-                    },
-                    {
-                        "in":"formData",
-                        "name":"password",
-                        "description":"Password of the user",
-                        "type":"string",
-                        "required":"true"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "201": {
-                        "description": "Created"
-                    },
-                    "400": {
-                        "description": "Invalid data"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/auth": {
-            "get": {
-                "tags": [
-                    "USER OPERATIONS"
-                ],
-                "summary": "Get all users",
-                "description": "Get all users",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "in":"header",
-                        "name":"Authorization",
-                        "description":"JWT Token of the user",
-                        "type":"string",
-                        "required":"true"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "201": {
-                        "description": "Created"
-                    },
-                    "400": {
-                        "description": "Invalid data"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/contact": {
-            "get": {
-                "tags": [
-                    "QUERY OPERATIONS"
-                ],
-                "summary": "Get all queries",
-                "description": "Get all queries",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "in":"header",
-                        "name":"Authorization",
-                        "description":"JWT Token of the user",
-                        "type":"string",
-                        "required":"true"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "201": {
-                        "description": "Created"
-                    },
-                    "400": {
-                        "description": "Invalid data"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        }
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
+  },
+  "tags": [
+    {
+      "name": "BLOG OPERATIONS",
+      "description": "Operations on blogs"
+    },
+    {
+      "name": "USER OPERATIONS",
+      "description": "Operations on user management and profile"
+    },
+    {
+      "name": "QUERY OPERATIONS",
+      "description": "Operations on contact messages"
+    }
+  ],
+  "paths": {
+    "/blogs/{id}": {
+      "get": {
+        "tags": ["BLOG OPERATIONS"],
+        "summary": "Get one blog",
+        "description": "Get one blog",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the blog",
+            "type": "string",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/blogs": {
+      "get": {
+        "tags": ["BLOG OPERATIONS"],
+        "summary": "Get all blogs",
+        "description": "Get all blogs so far!",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/blogs/{id}/comment": {
+      "patch": {
+        "tags": ["BLOG OPERATIONS"],
+        "summary": "Comment on a blog",
+        "description": "Comment on a blog",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT Token of the user",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the blog",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "new comment",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/blogs/{id}/update": {
+      "put": {
+        "tags": ["BLOG OPERATIONS"],
+        "summary": "Update on a blog",
+        "description": "Update on a blog",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT Token of the user",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the blog",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updating the blog",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/blogs/{id}/delete": {
+      "delete": {
+        "tags": ["BLOG OPERATIONS"],
+        "summary": "Delete a blog",
+        "description": "Delete a blog",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT Token of the user",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the property",
+            "type": "string",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/blogs/create": {
+      "post": {
+        "tags": ["BLOG OPERATIONS"],
+        "summary": "create a new blog",
+        "description": "create a new blog",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "email",
+            "description": "Email of the user",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "description": "Password of the user",
+            "type": "string",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["USER OPERATIONS"],
+        "summary": "login to your account",
+        "description": "login to your account",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Login into your account",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": ["USER OPERATIONS"],
+        "summary": "Register a new account",
+        "description": "Register a new account",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Add new user's information",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "email": { "type": "string" },
+                "position": { "type": "string" },
+                "experience": { "type": "string" },
+                "company": { "type": "string" },
+                "password": { "type": "string" },
+                "role": { "type": "string" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/{id}/update": {
+      "patch": {
+        "tags": ["USER OPERATIONS"],
+        "summary": "Update user",
+        "description": "Update user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT Token of the user",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "description": "id of the user",
+            "type": "string",
+            "required": "true"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updating the user's information",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "get": {
+        "tags": ["USER OPERATIONS"],
+        "summary": "Get all users",
+        "description": "Get all users",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT Token of the user",
+            "type": "string",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/contact": {
+      "get": {
+        "tags": ["QUERY OPERATIONS"],
+        "summary": "Get all queries",
+        "description": "Get all queries",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT Token of the user",
+            "type": "string",
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid data"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
 }
