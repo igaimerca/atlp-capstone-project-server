@@ -27,10 +27,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install dependencies
-      run: yarn
+      run: npm install
 
     - name: Run tests
-      run: yarn run coverage
+      run: npm run coverage
     
     - name: "Upload coverage report"
       run: |
