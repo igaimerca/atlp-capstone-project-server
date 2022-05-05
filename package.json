@@ -5,10 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha --timeout 180000",
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "coverage": "nyc --reporter=lcov --reporter=text yarn test"
+    "test": "mocha --timeout 10000 --exit",
+    "coverage": "nyc --reporter=lcov --reporter=text npm test",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
