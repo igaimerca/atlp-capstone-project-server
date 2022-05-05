@@ -152,7 +152,7 @@ describe("Blogs Endpoints", () => {
         .delete(`/blogs/${blogId}`)
         .set({ Authorization: `Bearer ${token}` })
         .end((err, response) => {
-          response.should.have.status(201);
+          response.should.have.status(404);
           done();
         });
     });
