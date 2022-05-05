@@ -58,28 +58,7 @@
             "description": "Internal server error"
           }
         }
-      }
-    },
-    "/blogs": {
-      "get": {
-        "tags": ["BLOG OPERATIONS"],
-        "summary": "Get all blogs",
-        "description": "Get all blogs so far!",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "400": {
-            "description": "Invalid data"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      }
-    },
-    "/blogs/{id}/comment": {
+      },
       "patch": {
         "tags": ["BLOG OPERATIONS"],
         "summary": "Comment on a blog",
@@ -126,9 +105,7 @@
             "description": "Internal server error"
           }
         }
-      }
-    },
-    "/blogs/{id}/update": {
+      },
       "put": {
         "tags": ["BLOG OPERATIONS"],
         "summary": "Update on a blog",
@@ -170,9 +147,7 @@
             "description": "Internal server error"
           }
         }
-      }
-    },
-    "/blogs/{id}/delete": {
+      },
       "delete": {
         "tags": ["BLOG OPERATIONS"],
         "summary": "Delete a blog",
@@ -208,9 +183,7 @@
             "description": "Internal server error"
           }
         }
-      }
-    },
-    "/blogs/create": {
+      },
       "post": {
         "tags": ["BLOG OPERATIONS"],
         "summary": "create a new blog",
@@ -244,6 +217,25 @@
           },
           "404": {
             "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/blogs": {
+      "get": {
+        "tags": ["BLOG OPERATIONS"],
+        "summary": "Get all blogs",
+        "description": "Get all blogs so far!",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Invalid data"
           },
           "500": {
             "description": "Internal server error"
@@ -340,7 +332,7 @@
         }
       }
     },
-    "/auth/{id}/update": {
+    "/auth/{id}": {
       "patch": {
         "tags": ["USER OPERATIONS"],
         "summary": "Update user",
