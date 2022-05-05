@@ -4,7 +4,7 @@ import chaiHttp from "chai-http";
 // Assertion style
 chai.should();
 chai.use(chaiHttp);
-const server = "http://localhost:5000";
+const server = "https://ai-brand-server.herokuapp.com";
 
 describe("Blogs Endpoints", () => {
   /**
