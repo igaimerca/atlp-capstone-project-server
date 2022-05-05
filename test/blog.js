@@ -4,7 +4,7 @@ import chaiHttp from "chai-http";
 // Assertion style
 chai.should();
 chai.use(chaiHttp);
-const server = "http://localhost:5000";
+const server = "https://ai-brand-server.herokuapp.com";
 
 describe("Blogs Endpoints", () => {
   /**
@@ -38,7 +38,7 @@ describe("Blogs Endpoints", () => {
    */
   describe("GET /blogs/:id", () => {
     it("It should GET a blog by ID", (done) => {
-      const blogId = "62570d150f78e1d2f5045378";
+      const blogId = "62586ab3ec518a4b7cb4f38b";
       chai
         .request(server)
         .get("/blogs/" + blogId)
@@ -88,7 +88,7 @@ describe("Blogs Endpoints", () => {
 
   describe("PUT /blogs/:id", () => {
     it("It should update an existing blog", (done) => {
-      const blogId = "62570d150f78e1d2f5045378";
+      const blogId = "62586ab3ec518a4b7cb4f38b";
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU3MGM4ODBmNzhlMWQyZjUwNDUzNzMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NjA2MTl9.JhWPMPZbb1EF9GwU7UX5FHZ-WMTORC6BCHE6nngQGuQ";
       const blog = {
@@ -118,9 +118,9 @@ describe("Blogs Endpoints", () => {
    * Test the PATCH route
    */
 
-  describe("PATCH /blogs/comment/:id", () => {
+  describe("PATCH /blogs/:id", () => {
     it("It should add comment on an existing blog", (done) => {
-      const blogId = "62570d150f78e1d2f5045378";
+      const blogId = "62586ab3ec518a4b7cb4f38b";
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU3MGM4ODBmNzhlMWQyZjUwNDUzNzMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NjA2MTl9.JhWPMPZbb1EF9GwU7UX5FHZ-WMTORC6BCHE6nngQGuQ";
       const blog = {
@@ -128,7 +128,7 @@ describe("Blogs Endpoints", () => {
       };
       chai
         .request(server)
-        .patch("/blogs/comment/" + blogId)
+        .patch("/blogs/" + blogId)
         .set({ Authorization: `Bearer ${token}` })
         .send(blog)
         .end((err, response) => {
@@ -142,14 +142,14 @@ describe("Blogs Endpoints", () => {
   /**
    * Test the DELETE route
    */
-  describe("DELETE /blogs/:id/delete", () => {
+  describe("DELETE /blogs/:id", () => {
     it("It should DELETE an existing blog", (done) => {
-      const blogId = "62600ad0b3f29f61ab82b939";
+      const blogId = "62600dc5f79673f4f0b024fa";
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjU3MGM4ODBmNzhlMWQyZjUwNDUzNzMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDk5NjA2MTl9.JhWPMPZbb1EF9GwU7UX5FHZ-WMTORC6BCHE6nngQGuQ";
       chai
         .request(server)
-        .delete(`/blogs/${blogId}/delete`)
+        .delete(`/blogs/${blogId}`)
         .set({ Authorization: `Bearer ${token}` })
         .end((err, response) => {
           response.should.have.status(201);

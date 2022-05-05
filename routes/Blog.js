@@ -6,14 +6,14 @@ const router = express.Router();
 
 router.get("/", getBlogs);
 
-router.post("", authenticate, createBlog);
+router.post("/", authenticate, createBlog);
 
 router.get("/:id", getBlog);
 
 router.put("/:id", authenticate, updateBlog);
 
-router.delete("/:id/delete", authenticate, deleteBlog);
+router.delete("/:id", authenticate, deleteBlog);
 
-router.patch("/comment/:id", authenticate, commentBlog);
+router.patch("/:id", authenticate, commentBlog);
 
 export default router;

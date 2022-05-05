@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha --timeout 10000000000",
+    "test": "mocha --timeout 180000",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "coverage": "nyc --reporter=lcov --reporter=text yarn test"
@@ -20,6 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "heroku": "^7.60.2",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
