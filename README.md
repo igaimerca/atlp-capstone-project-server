@@ -8,7 +8,7 @@
 
 ### Test badge
 [![CircleCI](https://circleci.com/gh/igaimerca/atlp-capstone-project-server.svg?style=shield)](https://circleci.com/gh/circleci-docs)
-[![codecov.io](https://codecov.io/github/igaimerca/atlp-capstone-project-server/coverage.svg?branch=main?token=NSF3EX1P5N")](https://codecov.io/github/igaimerca/atlp-capstone-project-server)
+[![codecov.io](https://codecov.io/github/igaimerca/atlp-capstone-project-server/coverage.svg?branch=main")](https://codecov.io/github/igaimerca/atlp-capstone-project-server)
 
 ### Installation
 
