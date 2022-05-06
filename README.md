@@ -8,7 +8,6 @@
 
 ### Test badge
 [![CircleCI](https://circleci.com/gh/igaimerca/atlp-capstone-project-server.svg?style=shield)](https://circleci.com/gh/circleci-docs)
-[![codecov](https://codecov.io/gh/igaimerca/atlp-capstone-project-server/branch/main/graph/badge.svg?token=7qxD1ydYqx)](https://codecov.io/gh/igaimerca/atlp-capstone-project-server)
 ### Installation
 
 1. Clone the repo
