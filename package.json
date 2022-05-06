@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha --timeout 10000 --exit",
-    "coverage": "nyc --reporter=lcov --reporter=text npm test",
-    "start": "node index.js"
+    "coverage": "nyc --reporter=lcov --reporter=text npm test"
   },
   "keywords": [],
   "author": "",
