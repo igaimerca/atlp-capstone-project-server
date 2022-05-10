@@ -16,6 +16,7 @@ export const getQueries = async (req, res) => {
 export const createQuery = async (req, res) => {
     try {
         let body = req.body;
+        console.log(req)
         const { error, value } = QuerySchema.validate(body);
         if (error) {
             res.status(400).json({ success: false, msg: error.details[0].message });
