@@ -62,7 +62,8 @@ export const updateUser = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        let user = await User.findOne({ email: req.body.email });
+        let user = await User.findOne({ email: req.body.email }).select('+password');
+        let loggedInUser = await User.findOne({ email: req.body.email });
         if (!user) return res.status(400).send("Invalid Email or Password!");
         const validPassword = await compare(req.body.password, user.password);
         if (!validPassword)
@@ -72,7 +73,8 @@ export const login = async (req, res) => {
         res.header("Authorization", token).send({
             status: 200,
             message: "Login Successful",
-            data: user,
+            data: loggedInUser,
+            token: token
           });
     } catch (ex) {
         res.status(400).send(ex.message);

@@ -1,6 +1,9 @@
 import express from "express";
 import { createBlog, getBlog, updateBlog, deleteBlog, getBlogs, commentBlog } from "../controller/Blog.js";
 import authenticate from "../middlewares/auth.middleware.js";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const router = express.Router();
 
